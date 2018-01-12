@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		147EFCB1200965E00035A3A3 /* LogInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147EFCB0200965E00035A3A3 /* LogInView.xib */; };
 		7C2DAF041EEF8B3A00E86EDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2DAF031EEF8B3A00E86EDA /* AppDelegate.swift */; };
 		7C2DAF061EEF8B3A00E86EDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2DAF051EEF8B3A00E86EDA /* ViewController.swift */; };
 		7C2DAF091EEF8B3A00E86EDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2DAF071EEF8B3A00E86EDA /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		147EFCB0200965E00035A3A3 /* LogInView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogInView.xib; sourceTree = "<group>"; };
 		7C2DAF001EEF8B3A00E86EDA /* kommilitonen-insurance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kommilitonen-insurance.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2DAF031EEF8B3A00E86EDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C2DAF051EEF8B3A00E86EDA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				7C2DAF051EEF8B3A00E86EDA /* ViewController.swift */,
+				147EFCB0200965E00035A3A3 /* LogInView.xib */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				7C2DAF0E1EEF8B3A00E86EDA /* LaunchScreen.storyboard in Resources */,
 				7C7418591EF0FCC7002E195A /* tiny-yolo-voc.pb in Resources */,
 				7C74185A1EF0FCC7002E195A /* voc.txt in Resources */,
+				147EFCB1200965E00035A3A3 /* LogInView.xib in Resources */,
 				7C2DAF0B1EEF8B3A00E86EDA /* Assets.xcassets in Resources */,
 				7C2DAF091EEF8B3A00E86EDA /* Main.storyboard in Resources */,
 			);
