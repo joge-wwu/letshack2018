@@ -103,7 +103,15 @@ extension LiveViewViewController {
                     let box = detectedObjects[i].box
                     
                     if detectedObjects[i].label == "car" && detectedObjects[i].prob > 0.25 {
-                        let plotView = PlotView(frame: box, color: UIColor.green)
+                        var plotView = PlotView(frame: box, color: UIColor.white)
+                        
+                        if detectedObjects[i].prob > 0.5 {
+                            plotView = PlotView(frame: box, color: UIColor.green)
+                        }
+                        else if detectedObjects[i].prob > 0.3 {
+                            plotView = PlotView(frame: box, color: UIColor.orange)
+                        }
+                     
                         plotView.backgroundColor = UIColor.clear
                         plotView.draw(CGRect(x: box.origin.x, y: box.origin.y, width: box.size.width, height: box.size.height))
                         self.boxesView.addSubview(plotView)

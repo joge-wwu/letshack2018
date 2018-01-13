@@ -29,9 +29,6 @@ import Photos
 private var CapturingStillImageContext = UnsafeMutableRawPointer.allocate(bytes: 1, alignedTo: 128)//allocate(capacity: 1)
 private var SessionRunningContext = UnsafeMutableRawPointer.allocate(bytes: 1, alignedTo: 128)
 
-private var cameraUnavailableLabel: UILabel!
-private var resumeButton: UIButton!
-
 // Session management
 private var sessionQueue: DispatchQueue!
 private var session: AVCaptureSession!
@@ -71,23 +68,10 @@ extension LiveViewViewController : AVCaptureVideoDataOutputSampleBufferDelegate,
         
         //Cam-related UI elements
         do {
-            
-            
             worldView = WorldView(frame: view.bounds)
             worldView.backgroundColor = UIColor.black
             view.addSubview(worldView)
             view.sendSubview(toBack: worldView)
-            
-            
-            resumeButton = UIButton(frame: CGRect(origin: worldView.center, size: CGSize(width: 150, height: 50)))
-            resumeButton .setTitle("Resume", for: UIControlState())
-            resumeButton .setTitleColor(UIColor.white, for: UIControlState())
-            resumeButton.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
-            resumeButton .addTarget(self, action: #selector(LiveViewViewController.resumeInterruptedSession(_:)), for: .touchUpInside)
-            resumeButton.center = worldView.center
-            resumeButton.isHidden = true
-            worldView .addSubview(resumeButton)
-        
         }
         
         // create AVCaptureSession
@@ -135,7 +119,6 @@ extension LiveViewViewController : AVCaptureVideoDataOutputSampleBufferDelegate,
         guard let camera =  LiveViewViewController.deviceWithMediaType(AVMediaTypeVideo, preferringPosition: frontCam ? .front : .back) else { return }
         let vidInput: AVCaptureDeviceInput!
         do {
-            
             vidInput = try AVCaptureDeviceInput(device: camera)
         } catch let error as NSError {
             vidInput = nil
@@ -160,7 +143,6 @@ extension LiveViewViewController : AVCaptureVideoDataOutputSampleBufferDelegate,
                 let previewLayer = worldView.layer as! AVCaptureVideoPreviewLayer
                 previewLayer.connection.videoOrientation = initialVideoOrientation
                 previewLayer.videoGravity = AVLayerVideoGravityResizeAspect
-                
             }
         } else {
             NSLog("Could not add video device input to the session")
@@ -170,7 +152,6 @@ extension LiveViewViewController : AVCaptureVideoDataOutputSampleBufferDelegate,
         //videoData
         videoDataOutput = AVCaptureVideoDataOutput()
         videoDataOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String : Int(kCVPixelFormatType_32BGRA)]
-        //NSDictionary(object: Int(kCVPixelFormatType_32BGRA), forKey: kCVPixelBufferPixelFormatTypeKey as String) as! [NSObject : AnyObject]
         
         videoDataOutput.alwaysDiscardsLateVideoFrames = true
         
@@ -188,7 +169,6 @@ extension LiveViewViewController : AVCaptureVideoDataOutputSampleBufferDelegate,
         //Still Image
         let still = AVCapturePhotoOutput()
         if session.canAddOutput(still) {
-            //still.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
             session.addOutput(still)
             stillImageOutput = still
         } else {
@@ -332,67 +312,68 @@ extension LiveViewViewController : AVCaptureVideoDataOutputSampleBufferDelegate,
         
     }
     
-    func stillImageCapture(completion: @escaping (Data)->Void) {
-        
-        async_singleton_wait(photoSingleton) { end in
-            
-            end_singleton = end
-            
-            let connection = stillImageOutput.connection(withMediaType: AVMediaTypeVideo)
-            let previewLayer = worldView.layer as! AVCaptureVideoPreviewLayer
-            
-            // Update the orientation on the still image output video connection before capturing.
-            connection?.videoOrientation = previewLayer.connection.videoOrientation
-            
-            // Flash set to Auto for Still Capture.
-            //Surface.setFlashMode(AVCaptureFlashMode.auto, forDevice: videoDeviceInput.device)
-            
-            photoCaptureCompletion = completion
-            
-            // Capture a still image.
-            let settings = AVCapturePhotoSettings(format: nil)//control flash and more
-            stillImageOutput.capturePhoto(with: settings, delegate: self)
-            
-            /*stillImageOutput.captureStillImageAsynchronously(from: connection) { (imageDataSampleBuffer, error) -> Void in
-             
-             if imageDataSampleBuffer != nil {
-             // The sample buffer is not retained. Create image data before saving the still image to the photo library asynchronously.
-             let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataSampleBuffer)
-             
-             handler(imageData!)
-             
-             } else {
-             NSLog("Could not capture still image: %@", error)
-             }
-             }*/
-            
-        }
-        
-    }
+//    func stillImageCapture(completion: @escaping (Data)->Void) {
+//
+//        async_singleton_wait(photoSingleton) { end in
+//
+//            end_singleton = end
+//
+//            let connection = stillImageOutput.connection(withMediaType: AVMediaTypeVideo)
+//            let previewLayer = worldView.layer as! AVCaptureVideoPreviewLayer
+//
+//            // Update the orientation on the still image output video connection before capturing.
+//            connection?.videoOrientation = previewLayer.connection.videoOrientation
+//
+//            // Flash set to Auto for Still Capture.
+//            //Surface.setFlashMode(AVCaptureFlashMode.auto, forDevice: videoDeviceInput.device)
+//
+//            photoCaptureCompletion = completion
+//
+//            // Capture a still image.
+//            let settings = AVCapturePhotoSettings(format: nil)//control flash and more
+//            stillImageOutput.capturePhoto(with: settings, delegate: self)
+//
+//            /*stillImageOutput.captureStillImageAsynchronously(from: connection) { (imageDataSampleBuffer, error) -> Void in
+//
+//             if imageDataSampleBuffer != nil {
+//             // The sample buffer is not retained. Create image data before saving the still image to the photo library asynchronously.
+//             let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataSampleBuffer)
+//
+//             handler(imageData!)
+//
+//             } else {
+//             NSLog("Could not capture still image: %@", error)
+//             }
+//             }*/
+//
+//        }
+//
+//    }
     
-    func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
-        
-        guard let photoSampleBuffer = photoSampleBuffer else {
-            print("Could not capture still image")
-            return
-        }
-        
-        guard let data = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer) else { return }
-        
-        photoCaptureCompletion?(data)
-        end_singleton?()
-        end_singleton = nil
-        
-    }
+//    func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
+//
+//        guard let photoSampleBuffer = photoSampleBuffer else {
+//            print("Could not capture still image")
+//            return
+//        }
+//
+//        guard let data = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer) else { return }
+//
+//        photoCaptureCompletion?(data)
+//        end_singleton?()
+//        end_singleton = nil
+//
+//    }
     
     //MARK: KVO and Notifications
     
     fileprivate func addObservers() {
         session.addObserver(self, forKeyPath: "running", options: NSKeyValueObservingOptions.new, context: SessionRunningContext)
-        stillImageOutput.addObserver(self, forKeyPath: "capturingStillImage", options:NSKeyValueObservingOptions.new, context: CapturingStillImageContext)
+        //stillImageOutput.addObserver(self, forKeyPath: "capturingStillImage", options:NSKeyValueObservingOptions.new, context: CapturingStillImageContext)
         
         NotificationCenter.default.addObserver(self, selector: #selector(LiveViewViewController.subjectAreaDidChange(_:)), name: NSNotification.Name.AVCaptureDeviceSubjectAreaDidChange, object: videoDeviceInput.device)
         NotificationCenter.default.addObserver(self, selector: #selector(LiveViewViewController.sessionRuntimeError(_:)), name: NSNotification.Name.AVCaptureSessionRuntimeError, object: session)
+        
         // A session can only run when the app is full screen. It will be interrupted in a multi-app layout, introduced in iOS 9,
         // see also the documentation of AVCaptureSessionInterruptionReason. Add observers to handle these session interruptions
         // and show a preview is paused message. See the documentation of AVCaptureSessionWasInterruptedNotification for other
@@ -404,8 +385,8 @@ extension LiveViewViewController : AVCaptureVideoDataOutputSampleBufferDelegate,
     fileprivate func removeObservers() {
         NotificationCenter.default.removeObserver(self)
         
-        session.removeObserver(self, forKeyPath: "running", context: SessionRunningContext)
-        stillImageOutput.removeObserver(self, forKeyPath: "capturingStillImage", context: CapturingStillImageContext)
+        //session.removeObserver(self, forKeyPath: "running", context: SessionRunningContext)
+        //stillImageOutput.removeObserver(self, forKeyPath: "capturingStillImage", context: CapturingStillImageContext)
     }
     
     /*override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -436,8 +417,6 @@ extension LiveViewViewController : AVCaptureVideoDataOutputSampleBufferDelegate,
      }*/
     
     func subjectAreaDidChange(_ notification: Notification) {
-        let devicePoint = CGPoint(x: 0.5, y: 0.5)
-        self.focusWithMode(.autoFocus, exposeWithMode: .autoExpose, atDevicePoint: devicePoint, monitorSubjectAreaChange: true)
     }
     
     func sessionRuntimeError(_ notification: Notification) {
@@ -452,13 +431,10 @@ extension LiveViewViewController : AVCaptureVideoDataOutputSampleBufferDelegate,
                     session.startRunning()
                     sessionRunning = session.isRunning
                 } else {
-                    DispatchQueue.main.async {
-                        resumeButton.isHidden = false
-                    }
+                 
                 }
             }
         } else {
-            resumeButton.isHidden = false
         }
     }
     
@@ -478,47 +454,14 @@ extension LiveViewViewController : AVCaptureVideoDataOutputSampleBufferDelegate,
             reason == AVCaptureSessionInterruptionReason.videoDeviceInUseByAnotherClient.rawValue {
             showResumeButton = true
         } else if reason == AVCaptureSessionInterruptionReason.videoDeviceNotAvailableWithMultipleForegroundApps.rawValue {
-            // Simply fade-in a label to inform the user that the camera is unavailable.
-            cameraUnavailableLabel.isHidden = false
-            cameraUnavailableLabel.alpha = 0.0
-            UIView.animate(withDuration: 0.25, animations: {
-                cameraUnavailableLabel.alpha = 1.0
-            })
+            //
         }
         
-        /*if #available(iOS 9.0, *) {
-         } else {
-         NSLog("Capture session was interrupted")
-         showResumeButton = (UIApplication.sharedApplication().applicationState == UIApplicationState.Inactive)
-         }*/
-        
-        if showResumeButton {
-            // Simply fade-in a button to enable the user to try to resume the session running.
-            resumeButton.isHidden = false
-            resumeButton.alpha = 0.0
-            UIView.animate(withDuration: 0.25, animations: {
-                resumeButton.alpha = 1.0
-            })
-        }
+      
     }
     
     func sessionInterruptionEnded(_ notification: Notification) {
         NSLog("Capture session interruption ended")
-        
-        if !resumeButton.isHidden {
-            UIView.animate(withDuration: 0.25, animations: {
-                resumeButton.alpha = 0.0
-            }, completion: {finished in
-                resumeButton.isHidden = true
-            })
-        }
-        if !cameraUnavailableLabel.isHidden {
-            UIView.animate(withDuration: 0.25, animations: {
-                cameraUnavailableLabel.alpha = 0.0
-            }, completion: {finished in
-                cameraUnavailableLabel.isHidden = true
-            })
-        }
     }
     
     //MARK: Actions
@@ -540,64 +483,15 @@ extension LiveViewViewController : AVCaptureVideoDataOutputSampleBufferDelegate,
                     alertController.addAction(cancelAction)
                     self.present(alertController, animated: true, completion: nil)
                 }
-            } else {
-                DispatchQueue.main.async {
-                    resumeButton.isHidden = true
-                }
             }
         }
     }
     
     
-    @IBAction func focusAndExposeTap(_ gestureRecognizer: UIGestureRecognizer) {
-        let devicePoint = (worldView.layer as! AVCaptureVideoPreviewLayer).captureDevicePointOfInterest(for: gestureRecognizer.location(in: gestureRecognizer.view))
-        self.focusWithMode(AVCaptureFocusMode.autoFocus, exposeWithMode: AVCaptureExposureMode.autoExpose, atDevicePoint: devicePoint, monitorSubjectAreaChange: true)
-        
-    }
-    
-    //MARK: Device Configuration
-    func focusWithMode(_ focusMode: AVCaptureFocusMode, exposeWithMode exposureMode: AVCaptureExposureMode, atDevicePoint point:CGPoint, monitorSubjectAreaChange: Bool) {
-        sessionQueue.async {
-            let device = videoDeviceInput.device
-            do {
-                try device?.lockForConfiguration()
-                defer {device?.unlockForConfiguration()}
-                // Setting (focus/exposure)PointOfInterest alone does not initiate a (focus/exposure) operation.
-                // Call -set(Focus/Exposure)Mode: to apply the new point of interest.
-                if (device?.isFocusPointOfInterestSupported)! && (device?.isFocusModeSupported(focusMode))! {
-                    device?.focusPointOfInterest = point
-                    device?.focusMode = focusMode
-                }
-                
-                if (device?.isExposurePointOfInterestSupported)! && (device?.isExposureModeSupported(exposureMode))! {
-                    device?.exposurePointOfInterest = point
-                    device?.exposureMode = exposureMode
-                }
-                
-                device?.isSubjectAreaChangeMonitoringEnabled = monitorSubjectAreaChange
-            } catch let error as NSError {
-                NSLog("Could not lock device for configuration: %@", error)
-            } catch _ {}
-        }
-    }
-    
-    /*class func setFlashMode(_ flashMode: AVCaptureFlashMode, forDevice device: AVCaptureDevice) {
-     if device.hasFlash && device.isFlashModeSupported(flashMode) {
-     do {
-     try device.lockForConfiguration()
-     defer {device.unlockForConfiguration()}
-     device.flashMode = flashMode
-     } catch let error as NSError {
-     NSLog("Could not lock device for configuration: %@", error)
-     }
-     }
-     }*/
-    
     class func deviceWithMediaType(_ mediaType: String, preferringPosition position: AVCaptureDevicePosition) -> AVCaptureDevice? {
         
         guard let devices =  AVCaptureDeviceDiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: mediaType, position: position).devices else { return nil }
         
-        //let devices = AVCaptureDevice.devices(withMediaType: mediaType)
         guard var captureDevice = devices.first else { return nil }
         
         for device in devices as [AVCaptureDevice] {
