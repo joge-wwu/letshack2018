@@ -109,8 +109,8 @@ extension LiveViewViewController {
                         self.boxesView.addSubview(plotView)
                         correctCount = correctCount + 1
                         if correctCount >= 5 {
-                            self.suspendFrames()
                             self.stopCam()
+                            self.suspendFrames()
                             delegate?.validPhoto(image: UIImage(ciImage: frameImage), vc: self)
                             return;
                         }

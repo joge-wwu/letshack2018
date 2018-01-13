@@ -263,13 +263,14 @@ extension LiveViewViewController : AVCaptureVideoDataOutputSampleBufferDelegate,
         
         sessionQueue.async {
             if setupResult == .success {
-                do {
-                    session.stopRunning()
+            
+                    if sessionRunning {
+                        self.removeObservers()
+                        session.stopRunning()
+                    }
+                    
                     sessionRunning = false
-                }
-                catch
-                {}
-                
+           
                 //self.removeObservers()
             }
         }
