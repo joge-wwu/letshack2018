@@ -12,11 +12,16 @@ import MapKit
 
 public class UploadResultViewController : UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
+    @IBOutlet weak var monyAction: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     var locationManager:CLLocationManager!
     
     public init() {
         super.init(nibName: "UploadResultView", bundle: nil)
+    }
+    
+    @IBAction func manyActionSender(_ sender: Any) {
+        self.present(MoneyResultViewController(), animated: true)
     }
     
     public override func viewDidLoad() {

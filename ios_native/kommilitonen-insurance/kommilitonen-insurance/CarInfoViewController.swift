@@ -86,6 +86,15 @@ public class CarInfoController : UIViewController, UINavigationControllerDelegat
         
         uploadAlert.view.addSubview(uploadloadingIndicator)
         
+        let kennzeichenAlert = UIAlertController(title: nil, message: "Kennzeichen wird analysiert ...", preferredStyle: .alert)
+        
+        let kennzeichenIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        kennzeichenIndicator.hidesWhenStopped = true
+        kennzeichenIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        kennzeichenIndicator.startAnimating();
+        
+        kennzeichenAlert.view.addSubview(kennzeichenIndicator)
+        
         
         ImageRemoteCheckService.checkImageJson(image: image, imageTypeId: imageOverlayIds[captureStep]) { (result) in
             
@@ -101,6 +110,18 @@ public class CarInfoController : UIViewController, UINavigationControllerDelegat
                     uploadAlert.dismiss(animated: false, completion: nil)
                     
                     NSLog("Upload")
+                    
+                }
+                
+                self.present(kennzeichenAlert, animated: true, completion: nil)
+                
+                ImageRemoteCheckService.checkKennzeichen(image: image, imageTypeId: self.imageOverlayIds[self.captureStep]) { (result) in
+                    
+                    kennzeichenAlert.dismiss(animated: false, completion: nil)
+                    
+                    
+                    
+                    NSLog("Kennzeichen: " + result)
                     
                 }
                 
