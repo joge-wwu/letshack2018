@@ -4,9 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -37,34 +35,9 @@
                     <view key="view" contentMode="scaleToFill" id="e4e-hQ-KVH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6TJ-xX-Qum">
-                                <rect key="frame" x="12.5" y="235" width="350" height="197"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="350" id="5fW-Kf-xvb"/>
-                                    <constraint firstAttribute="width" secondItem="6TJ-xX-Qum" secondAttribute="height" multiplier="1920:1080" id="yNw-Wr-aVq"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8K-W6-MwJ">
-                                <rect key="frame" x="164" y="465" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="startCaptureBtn:" destination="AJM-M9-jjg" eventType="touchUpInside" id="q1L-bD-FNg"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="6TJ-xX-Qum" firstAttribute="centerY" secondItem="e4e-hQ-KVH" secondAttribute="centerY" id="7Bq-ZN-foM"/>
-                            <constraint firstItem="6TJ-xX-Qum" firstAttribute="centerX" secondItem="e4e-hQ-KVH" secondAttribute="centerX" id="VHp-jz-NjD"/>
-                            <constraint firstItem="Z8K-W6-MwJ" firstAttribute="centerX" secondItem="e4e-hQ-KVH" secondAttribute="centerX" id="ort-Nd-8fD"/>
-                            <constraint firstItem="Z8K-W6-MwJ" firstAttribute="top" secondItem="6TJ-xX-Qum" secondAttribute="bottom" constant="33" id="rWb-cq-zNj"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CVe-gZ-E4r"/>
-                    <connections>
-                        <outlet property="imageView" destination="6TJ-xX-Qum" id="V4W-iL-l46"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yb2-JC-heo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
