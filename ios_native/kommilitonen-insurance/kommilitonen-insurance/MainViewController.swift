@@ -9,10 +9,8 @@
 import Foundation
 import UIKit
 
-public class MainViewController : LoginViewController {
-    
-  
-    
+public class MainViewController : UIViewController {
+
     public override func viewDidLoad() {
         super.viewDidLoad()
         if let nc = self.navigationController {
@@ -21,14 +19,8 @@ public class MainViewController : LoginViewController {
         }
     }
     
-
-    
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-
-    
-    
     
 }

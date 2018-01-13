@@ -9,7 +9,26 @@
 import Foundation
 import UIKit
 
-public class ClassifySchadenViewController : UIViewController {
+public class ClassifySchadenViewController : UIViewController, LiveViewViewControllerDelegate{
+    
+    
+    func validPhoto(image: UIImage, vc: LiveViewViewController) {
+        vc.dismiss(animated: true, completion: nil)
+        NSLog("Bild gefunden")
+        
+        if let nc = self.navigationController {
+            nc.pushViewController(ClassifySchadenResultViewController(), animated: true)
+        }
+
+//            let ics = ImageClassificationService()
+//
+//            ics.updateClassifications(for: image)
+//
+//            var lr : CarClassificationResult = ics.lastResult
+//
+//            NSLog("Fertig")
+    }
+    
     
     
     init() {
@@ -19,6 +38,9 @@ public class ClassifySchadenViewController : UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Schaden fotografieren"
+        let liveViewViewController = LiveViewViewController()
+        liveViewViewController.delegate = self
+        self.present(liveViewViewController, animated: true, completion: nil)
     }
     
     required public init?(coder aDecoder: NSCoder) {
