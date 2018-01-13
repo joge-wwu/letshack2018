@@ -66,7 +66,7 @@ public class CarInfoController : UIViewController, UINavigationControllerDelegat
         
         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
         
-        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let alert = UIAlertController(title: nil, message: "Foto wird geprüft ...", preferredStyle: .alert)
         
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
@@ -77,35 +77,74 @@ public class CarInfoController : UIViewController, UINavigationControllerDelegat
         self.present(alert, animated: true, completion: nil)
         
         
-        ImageRemoteCheckService.checkImage(image: image, imageTypeId: imageOverlayIds[captureStep]) { (result) in
+        let uploadAlert = UIAlertController(title: nil, message: "Foto wird gespeichert ...", preferredStyle: .alert)
+        
+        let uploadloadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        uploadloadingIndicator.hidesWhenStopped = true
+        uploadloadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        uploadloadingIndicator.startAnimating();
+        
+        uploadAlert.view.addSubview(uploadloadingIndicator)
+        
+        
+        ImageRemoteCheckService.checkImageJson(image: image, imageTypeId: imageOverlayIds[captureStep]) { (result) in
+            
             alert.dismiss(animated: false, completion: nil)
+            
             if result {
                 NSLog("HTTP true")
-            }
-            NSLog("HTTP false")
-            self.captureStep = self.captureStep + 1
-            
-            DispatchQueue.main.async {
                 
-                if self.captureStep == 1 {
+                self.present(uploadAlert, animated: true, completion: nil)
+                
+                ImageRemoteCheckService.uploadImage(image: image, imageTypeId: self.imageOverlayIds[self.captureStep]) { (result) in
                     
-                    self.statusFront.backgroundColor = UIColor.green
-                }
-                else if self.captureStep == 2 {
-                    self.statusRight.backgroundColor = UIColor.green
-                }
-                else if self.captureStep == 3 {
-                    self.statusBack.backgroundColor = UIColor.green
+                    uploadAlert.dismiss(animated: false, completion: nil)
+                    
+                    NSLog("Upload")
+                    
                 }
                 
-                if self.captureStep > 3 {
-                    self.statusLeft.backgroundColor = UIColor.green
-                    self.captureBtn.setTitle("Fertig", for: .normal)
-                    NSLog("Next Step")
+                DispatchQueue.main.async {
+                    
+                    self.captureStep = self.captureStep + 1
+                    
+                    if self.captureStep == 1 {
+                        
+                        self.statusFront.backgroundColor = UIColor.green
+                    }
+                    else if self.captureStep == 2 {
+                        self.statusRight.backgroundColor = UIColor.green
+                    }
+                    else if self.captureStep == 3 {
+                        self.statusBack.backgroundColor = UIColor.green
+                    }
+                    
+                    if self.captureStep > 3 {
+                        self.statusLeft.backgroundColor = UIColor.green
+                        self.captureBtn.setTitle("Schaden einreichen", for: .normal)
+                    }
+                    else {
+                        self.captureBtn.setTitle("nächstes Foto aufnehmen", for: .normal)
+                    }
+                    
                 }
-                else {
-                    self.captureBtn.setTitle("nächstes Foto aufnehmen", for: .normal)
-                }
+                
+            }
+            else {
+                
+                NSLog("HTTP false")
+                
+                let alert = UIAlertController(title: "Bitte wiederholen", message: "Bitte orientieren Sie sich bei der Aufnahme an den Vorgaben.", preferredStyle: .alert)
+                
+                let wiederholen = UIAlertAction(title: "Wiederholen", style: .default, handler: { (action) in
+                    self.takeDeatilImageAction(action)
+                })
+                
+                alert.addAction(wiederholen)
+                
+                self.present(alert, animated: true, completion: nil)
+                
+                
                 
             }
  
@@ -114,7 +153,17 @@ public class CarInfoController : UIViewController, UINavigationControllerDelegat
     }
     
     @IBAction func takeDeatilImageAction(_ sender: Any) {
-        showCamera()
+        
+        
+        if self.captureStep > 3 {
+            if let nc = self.navigationController {
+                nc.pushViewController(UploadResultViewController(), animated: true)
+            }
+        }
+        else {
+            showCamera()
+        }
+        
     }
     
 }

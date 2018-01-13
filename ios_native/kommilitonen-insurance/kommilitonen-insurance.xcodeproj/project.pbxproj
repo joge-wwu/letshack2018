@@ -212,7 +212,6 @@
 				D8567EE3200A0AD6006A7099 /* OverlayFrontView.xib */,
 				1418EFC3200A1A0F00632AD6 /* UploadResultView.xib */,
 				1418EFC5200A1A2200632AD6 /* UploadResultViewController.swift */,
-
 				D8567EE5200A182F006A7099 /* ImageRemoteCheckService.swift */,
 			);
 			name = VCs;

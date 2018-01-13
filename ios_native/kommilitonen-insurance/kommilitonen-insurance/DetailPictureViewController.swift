@@ -73,14 +73,7 @@ public class DetailPictureViewController : UIViewController, UINavigationControl
         alert.view.addSubview(loadingIndicator)
         self.present(alert, animated: true, completion: nil)
         
-        
-        ImageRemoteCheckService.checkImage(image: image, imageTypeId: imageOverlayId) { (result) in
-            alert.dismiss(animated: false, completion: nil)
-            if result {
-                NSLog("HTTP true")
-            }
-            NSLog("HTTP false")
-        }
+      
         
         
     }
