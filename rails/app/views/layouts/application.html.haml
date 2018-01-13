@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %meta{charset: 'UTF-8'}
+    %title Eucon
+    = csrf_meta_tags
+    %link{href: 'https://fonts.googleapis.com/icon?family=Material+Icons', :rel => 'stylesheet'}
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+  %body
+    .toasts
+      -if notice
+        %p.notice= notice
+      -if alert
+        %p.alert= alert
+    = render partial: "layouts/navigation"
+    .container
+      = yield

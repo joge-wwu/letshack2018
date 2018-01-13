@@ -1,0 +1,14 @@
+%nav
+  .nav-wrapper
+    %a.brand-logo.center{href: '/'}
+      %img{src: image_path('eucon-logo.png')}
+    %a.button-collapse#mobile-menu-btn{'data-activates': 'mobile-menu', href: '#'}
+      %i.material-icons menu
+    .hide-on-med-and-down
+      %ul.left
+        = render partial: "layouts/main_links"
+      %ul.right
+        = render partial: "layouts/secondary_links"
+    %ul#mobile-menu.side-nav
+      = render partial: "layouts/main_links"
+      = render partial: "layouts/secondary_links"
