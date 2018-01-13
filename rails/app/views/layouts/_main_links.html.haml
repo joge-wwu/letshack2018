@@ -1,0 +1,6 @@
+- menu_links = [[root_path, 'Dasboard']]
+-# - menu_links << [store_tuning_path, 'Filial Tuning']
+- menu_links.each do |menu_link|
+  %li{class: ('active' if current_page?(menu_link[0]))}
+    %a{href: menu_link[0]}
+      = menu_link[1]

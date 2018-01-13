@@ -1,0 +1,56 @@
+.row
+  .col.s12
+    %h4 Schadensfall 469.523.876
+    %h5 Vollkasko 
+.row
+  .col.s12.l6
+    .card
+      .card-content
+        %span.card-title Marc Weßling
+        %p
+          Wienburgstraße 207
+          %br
+          48159 Münster
+      .card-action
+        %a.btn{href: "tel:"}
+          %i.material-icons.left local_phone
+          &nbsp;Anruf
+        %a.btn{href: "mailto:"}
+          %i.material-icons.left mail
+          &nbsp;E-Mail
+.row
+  .col.s12.m6.l3
+    %img.responsive-img.materialboxed.z-depth-2{src: '/upload/car_side_left'}
+  .col.s12.m6.l3
+    %img.responsive-img.materialboxed.z-depth-2{src: '/upload/car_side_right'}
+  .col.s12.m6.l3
+    %img.responsive-img.materialboxed.z-depth-2{src: '/upload/car_front'}
+  .col.s12.m6.l3
+    %img.responsive-img.materialboxed.z-depth-2{src: '/upload/car_back'}
+.row
+  .col.s12.l6
+    .card
+      .card-content
+        %span.card-title Kostenvoranschlag
+        %p
+          Auto Service Achterholt
+          %ul
+            %li 
+              Außenspiegel: 
+              %span.secondary-content 512,49€
+            %li
+              Montage:
+              %span.secondary-content 89€
+            %li
+              %strong 
+                Summe:
+                %span.secondary-content 601,49€
+      .card-action
+        %a.btn.approve{href: "#"}
+          %i.material-icons.left check
+          &nbsp;Genehmigen
+        %a.btn.decline{href: "#"}
+          %i.material-icons.left do_not_disturb
+          &nbsp;Ablehnen
+        %p.approved
+          Genehmigt ✅
