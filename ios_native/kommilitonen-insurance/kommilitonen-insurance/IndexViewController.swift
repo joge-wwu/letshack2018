@@ -21,12 +21,7 @@ public class IndexViewController : UIViewController {
     }
     
     @IBAction func vertraegeAction(_ sender: Any) {
-        if let nc = self.navigationController {
-            let dpVc = DetailPictureViewController()
-            dpVc.imageOverlayId = "car_side_left"
-            
-            nc.pushViewController(dpVc, animated: true)
-        }
+        self.present(MoneyResultViewController(), animated: true)
     }
     
     required public init?(coder aDecoder: NSCoder) {

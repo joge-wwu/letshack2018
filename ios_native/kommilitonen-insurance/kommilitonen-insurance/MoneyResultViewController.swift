@@ -21,9 +21,20 @@ public class MoneyResultViewController : UIViewController {
         super.init(coder: aDecoder)
     }
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIView.animate(withDuration: 2.0, animations: { () -> Void in
+            self.check1.alpha = 1.0
+            self.check2.alpha = 1.0
+        })
+    }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         self.title="Erstattung"
+        
+        self.check1.alpha = 0
+        self.check2.alpha = 0
         
     }
     

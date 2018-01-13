@@ -75,14 +75,14 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checked" translatesAutoresizingMaskIntoConstraints="NO" id="zMA-yy-tDv">
+                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checked" translatesAutoresizingMaskIntoConstraints="NO" id="zMA-yy-tDv">
                     <rect key="frame" x="310" y="206" width="25" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="25" id="2rr-Sb-uFC"/>
                         <constraint firstAttribute="height" constant="25" id="wET-bv-RJn"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checked" translatesAutoresizingMaskIntoConstraints="NO" id="va8-2l-roq">
+                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checked" translatesAutoresizingMaskIntoConstraints="NO" id="va8-2l-roq">
                     <rect key="frame" x="310" y="236" width="25" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="25" id="4Yd-Zc-rkQ"/>
