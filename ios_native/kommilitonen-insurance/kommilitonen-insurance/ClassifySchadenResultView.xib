@@ -36,6 +36,9 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="car" translatesAutoresizingMaskIntoConstraints="NO" id="hhn-mM-W1E">
                     <rect key="frame" x="29" y="262" width="232" height="143"/>
                 </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="checked" translatesAutoresizingMaskIntoConstraints="NO" id="TIi-Hv-eEd">
+                    <rect key="frame" x="170" y="297" width="176" height="72"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6YZ-oN-CnC">
                     <rect key="frame" x="0.0" y="20" width="375" height="150"/>
                     <subviews>
@@ -72,30 +75,50 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Hier gilt Ihre Vollkaskoversicherung. " textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EhK-gp-T2r">
-                    <rect key="frame" x="49" y="428" width="277" height="21"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6qt-Bj-eCM">
+                    <rect key="frame" x="41" y="270" width="292" height="120"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="UIView.border.width">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="UIView.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hier gilt Ihre Vollkaskoversicherung. " textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EhK-gp-T2r">
+                    <rect key="frame" x="49" y="453" width="277" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="G1x-3s-2fr"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="checked" translatesAutoresizingMaskIntoConstraints="NO" id="TIi-Hv-eEd">
-                    <rect key="frame" x="170" y="297" width="176" height="72"/>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="98k-4u-erK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="197" id="6N2-kQ-pgT"/>
+                <constraint firstItem="6qt-Bj-eCM" firstAttribute="top" secondItem="98k-4u-erK" secondAttribute="bottom" constant="31" id="9mL-7r-BhI"/>
                 <constraint firstItem="VWh-GB-gQ0" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="BMV-Qo-MdW"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="VWh-GB-gQ0" secondAttribute="bottom" constant="97" id="BOn-Qf-8vu"/>
+                <constraint firstItem="6qt-Bj-eCM" firstAttribute="leading" secondItem="hhn-mM-W1E" secondAttribute="trailing" constant="-220" id="CSL-xn-v4b"/>
+                <constraint firstItem="6qt-Bj-eCM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="41" id="Ecl-KX-2bC"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="TIi-Hv-eEd" secondAttribute="trailing" constant="7" id="F2R-jM-nzb"/>
+                <constraint firstItem="hhn-mM-W1E" firstAttribute="top" secondItem="6qt-Bj-eCM" secondAttribute="bottom" constant="-135" id="Hhz-de-Js8"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="6YZ-oN-CnC" secondAttribute="top" id="TMb-KU-D6X"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6YZ-oN-CnC" secondAttribute="trailing" id="dga-hy-3cn"/>
                 <constraint firstItem="EhK-gp-T2r" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="49" id="eKf-MR-FJX"/>
                 <constraint firstItem="TIi-Hv-eEd" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="242" id="eN8-QT-LIf"/>
                 <constraint firstItem="98k-4u-erK" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="hKb-p0-LqG"/>
                 <constraint firstItem="hhn-mM-W1E" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="6" id="lET-0Z-acL"/>
+                <constraint firstItem="EhK-gp-T2r" firstAttribute="top" secondItem="hhn-mM-W1E" secondAttribute="bottom" constant="23" id="n99-p9-yiP"/>
+                <constraint firstItem="6qt-Bj-eCM" firstAttribute="centerY" secondItem="hhn-mM-W1E" secondAttribute="centerY" id="pKO-9E-aVu"/>
+                <constraint firstItem="6qt-Bj-eCM" firstAttribute="centerY" secondItem="TIi-Hv-eEd" secondAttribute="centerY" id="qTM-m4-xNo"/>
+                <constraint firstAttribute="bottom" secondItem="EhK-gp-T2r" secondAttribute="bottom" constant="218" id="qiz-eT-Gd6"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="EhK-gp-T2r" secondAttribute="trailing" constant="49" id="sG7-Ht-wmL"/>
                 <constraint firstItem="hhn-mM-W1E" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="235" id="wMU-Ne-b9S"/>
+                <constraint firstItem="6qt-Bj-eCM" firstAttribute="centerX" secondItem="98k-4u-erK" secondAttribute="centerX" id="z84-PV-ch6"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="leading" secondItem="6YZ-oN-CnC" secondAttribute="leading" id="zLC-gF-RJm"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
