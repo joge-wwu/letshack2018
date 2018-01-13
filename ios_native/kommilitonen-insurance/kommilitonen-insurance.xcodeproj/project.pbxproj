@@ -11,7 +11,7 @@
 		147EFCED20097C060035A3A3 /* Index.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147EFCEC20097C060035A3A3 /* Index.xib */; };
 		147EFCEF20097E620035A3A3 /* CarInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147EFCEE20097E620035A3A3 /* CarInfo.xib */; };
 		7C2DAF041EEF8B3A00E86EDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2DAF031EEF8B3A00E86EDA /* AppDelegate.swift */; };
-		7C2DAF061EEF8B3A00E86EDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2DAF051EEF8B3A00E86EDA /* ViewController.swift */; };
+		7C2DAF061EEF8B3A00E86EDA /* LiveViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2DAF051EEF8B3A00E86EDA /* LiveViewViewController.swift */; };
 		7C2DAF091EEF8B3A00E86EDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2DAF071EEF8B3A00E86EDA /* Main.storyboard */; };
 		7C2DAF0B1EEF8B3A00E86EDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C2DAF0A1EEF8B3A00E86EDA /* Assets.xcassets */; };
 		7C2DAF0E1EEF8B3A00E86EDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2DAF0C1EEF8B3A00E86EDA /* LaunchScreen.storyboard */; };
@@ -29,6 +29,12 @@
 		7C7418641EF0FD05002E195A /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7418601EF0FD05002E195A /* libprotobuf.a */; };
 		7C7418651EF0FD05002E195A /* libtensorflow-core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7418611EF0FD05002E195A /* libtensorflow-core.a */; };
 		7C7418681EF0FD1A002E195A /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C7418671EF0FD1A002E195A /* Accelerate.framework */; };
+		D8567ED02009404C006A7099 /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8567ECF2009404C006A7099 /* CaptureViewController.swift */; };
+		D8567ED2200940A7006A7099 /* CaptureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8567ED1200940A7006A7099 /* CaptureViewController.xib */; };
+		D8567ED42009480A006A7099 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8567ED32009480A006A7099 /* MainViewController.swift */; };
+		D8567ED7200975C3006A7099 /* car_sides.txt in Resources */ = {isa = PBXBuildFile; fileRef = D8567ED5200975C3006A7099 /* car_sides.txt */; };
+		D8567ED8200975C3006A7099 /* car_sides.pb in Resources */ = {isa = PBXBuildFile; fileRef = D8567ED6200975C3006A7099 /* car_sides.pb */; };
+		D8567EDA20097667006A7099 /* YoloCarSides.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8567ED920097667006A7099 /* YoloCarSides.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +43,7 @@
 		147EFCEE20097E620035A3A3 /* CarInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarInfo.xib; sourceTree = "<group>"; };
 		7C2DAF001EEF8B3A00E86EDA /* kommilitonen-insurance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kommilitonen-insurance.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2DAF031EEF8B3A00E86EDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7C2DAF051EEF8B3A00E86EDA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7C2DAF051EEF8B3A00E86EDA /* LiveViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewViewController.swift; sourceTree = "<group>"; };
 		7C2DAF081EEF8B3A00E86EDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7C2DAF0A1EEF8B3A00E86EDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C2DAF0D1EEF8B3A00E86EDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,6 +65,12 @@
 		7C7418601EF0FD05002E195A /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = dependencies/lib/libprotobuf.a; sourceTree = SOURCE_ROOT; };
 		7C7418611EF0FD05002E195A /* libtensorflow-core.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libtensorflow-core.a"; path = "dependencies/lib/libtensorflow-core.a"; sourceTree = SOURCE_ROOT; };
 		7C7418671EF0FD1A002E195A /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		D8567ECF2009404C006A7099 /* CaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
+		D8567ED1200940A7006A7099 /* CaptureViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CaptureViewController.xib; sourceTree = "<group>"; };
+		D8567ED32009480A006A7099 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D8567ED5200975C3006A7099 /* car_sides.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = car_sides.txt; path = dependencies/models/car_sides.txt; sourceTree = SOURCE_ROOT; };
+		D8567ED6200975C3006A7099 /* car_sides.pb */ = {isa = PBXFileReference; lastKnownFileType = file; name = car_sides.pb; path = dependencies/models/car_sides.pb; sourceTree = SOURCE_ROOT; };
+		D8567ED920097667006A7099 /* YoloCarSides.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoloCarSides.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +114,7 @@
 				7C7418521EF0CF53002E195A /* Config */,
 				7C7418511EF0CF49002E195A /* Assets */,
 				7C7418501EF0CF3C002E195A /* Storyboards */,
+				D8567ECC20093C7C006A7099 /* Views */,
 				7C74184F1EF0CF30002E195A /* VCs */,
 				7C74184E1EF0CF25002E195A /* Bridge */,
 				7C74184D1EF0CF13002E195A /* Extensions */,
@@ -128,6 +141,7 @@
 				7C7418451EF0CE8B002E195A /* TypeExtensions.swift */,
 				7C74183D1EF0CE7E002E195A /* Jetpac.swift */,
 				7C74183B1EF0CE75002E195A /* Camera.swift */,
+				D8567ED920097667006A7099 /* YoloCarSides.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -143,7 +157,9 @@
 		7C74184F1EF0CF30002E195A /* VCs */ = {
 			isa = PBXGroup;
 			children = (
-				7C2DAF051EEF8B3A00E86EDA /* ViewController.swift */,
+				7C2DAF051EEF8B3A00E86EDA /* LiveViewViewController.swift */,
+				D8567ECF2009404C006A7099 /* CaptureViewController.swift */,
+				D8567ED32009480A006A7099 /* MainViewController.swift */,
 				147EFCB0200965E00035A3A3 /* LogInView.xib */,
 				147EFCEC20097C060035A3A3 /* Index.xib */,
 				147EFCEE20097E620035A3A3 /* CarInfo.xib */,
@@ -187,6 +203,8 @@
 		7C7418541EF0FCB7002E195A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D8567ED6200975C3006A7099 /* car_sides.pb */,
+				D8567ED5200975C3006A7099 /* car_sides.txt */,
 				7C7418551EF0FCC7002E195A /* jetpac.ntwk */,
 				7C7418561EF0FCC7002E195A /* tiny-yolo-voc.pb */,
 				7C7418571EF0FCC7002E195A /* voc.txt */,
@@ -204,6 +222,14 @@
 				7C7418611EF0FD05002E195A /* libtensorflow-core.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D8567ECC20093C7C006A7099 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D8567ED1200940A7006A7099 /* CaptureViewController.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,11 +293,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8567ED7200975C3006A7099 /* car_sides.txt in Resources */,
+				D8567ED8200975C3006A7099 /* car_sides.pb in Resources */,
 				147EFCEF20097E620035A3A3 /* CarInfo.xib in Resources */,
 				7C7418581EF0FCC7002E195A /* jetpac.ntwk in Resources */,
 				7C2DAF0E1EEF8B3A00E86EDA /* LaunchScreen.storyboard in Resources */,
 				147EFCED20097C060035A3A3 /* Index.xib in Resources */,
 				7C7418591EF0FCC7002E195A /* tiny-yolo-voc.pb in Resources */,
+				D8567ED2200940A7006A7099 /* CaptureViewController.xib in Resources */,
 				7C74185A1EF0FCC7002E195A /* voc.txt in Resources */,
 				147EFCB1200965E00035A3A3 /* LogInView.xib in Resources */,
 				7C2DAF0B1EEF8B3A00E86EDA /* Assets.xcassets in Resources */,
@@ -286,7 +315,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C2DAF061EEF8B3A00E86EDA /* ViewController.swift in Sources */,
+				7C2DAF061EEF8B3A00E86EDA /* LiveViewViewController.swift in Sources */,
+				D8567EDA20097667006A7099 /* YoloCarSides.swift in Sources */,
 				7C74184B1EF0CE91002E195A /* Yolo.swift in Sources */,
 				7C7418491EF0CE8B002E195A /* TypeExtensions.swift in Sources */,
 				7C2DAF041EEF8B3A00E86EDA /* AppDelegate.swift in Sources */,
@@ -294,6 +324,8 @@
 				7C7418461EF0CE8B002E195A /* tensorflow_utils.mm in Sources */,
 				7C74183C1EF0CE75002E195A /* Camera.swift in Sources */,
 				7C7418471EF0CE8B002E195A /* tfWrap.mm in Sources */,
+				D8567ED02009404C006A7099 /* CaptureViewController.swift in Sources */,
+				D8567ED42009480A006A7099 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +460,7 @@
 				);
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/dependencies";
 				INFOPLIST_FILE = "$(SRCROOT)/kommilitonen-insurance/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -459,6 +492,7 @@
 				);
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/dependencies";
 				INFOPLIST_FILE = "$(SRCROOT)/kommilitonen-insurance/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

@@ -201,6 +201,7 @@
         wanted_input_width = image_width;
         wanted_input_height = image_height;
         
+        
         tensorflow::Tensor image_tensor(tensorflow::DT_FLOAT,
                                         tensorflow::TensorShape({1, wanted_input_height, wanted_input_width, wanted_input_channels}));
         
