@@ -49,6 +49,7 @@
 		D8567EE02009892F006A7099 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D8567EDF2009892F006A7099 /* MobileNet.mlmodel */; };
 		D8567EE2200990C8006A7099 /* CarClassificationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8567EE1200990C8006A7099 /* CarClassificationResult.swift */; };
 		D8567EE4200A0AD6006A7099 /* OverlayFrontView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8567EE3200A0AD6006A7099 /* OverlayFrontView.xib */; };
+		D8567EE6200A182F006A7099 /* ImageRemoteCheckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8567EE5200A182F006A7099 /* ImageRemoteCheckService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		D8567EDF2009892F006A7099 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = MobileNet.mlmodel; path = dependencies/models/MobileNet.mlmodel; sourceTree = SOURCE_ROOT; };
 		D8567EE1200990C8006A7099 /* CarClassificationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarClassificationResult.swift; sourceTree = "<group>"; };
 		D8567EE3200A0AD6006A7099 /* OverlayFrontView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverlayFrontView.xib; sourceTree = "<group>"; };
+		D8567EE5200A182F006A7099 /* ImageRemoteCheckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRemoteCheckService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 				D8567EDB20098830006A7099 /* CarClassificationService.swift */,
 				D8567EE1200990C8006A7099 /* CarClassificationResult.swift */,
 				D8567EE3200A0AD6006A7099 /* OverlayFrontView.xib */,
+				D8567EE5200A182F006A7099 /* ImageRemoteCheckService.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				7C7418461EF0CE8B002E195A /* tensorflow_utils.mm in Sources */,
 				7C74183C1EF0CE75002E195A /* Camera.swift in Sources */,
 				7C7418471EF0CE8B002E195A /* tfWrap.mm in Sources */,
+				D8567EE6200A182F006A7099 /* ImageRemoteCheckService.swift in Sources */,
 				D8567EDE200988B3006A7099 /* CGImagePropertyOrientation.swift in Sources */,
 				D8567ED02009404C006A7099 /* CaptureViewController.swift in Sources */,
 				1418EFB62009894200632AD6 /* CarInfoViewController.swift in Sources */,

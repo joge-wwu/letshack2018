@@ -17,12 +17,15 @@ public class IndexViewController : UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        self.title="Index"
+        self.title="Willkommen"
     }
     
     @IBAction func vertraegeAction(_ sender: Any) {
         if let nc = self.navigationController {
-            nc.pushViewController(DetailPictureViewController(), animated: true)
+            let dpVc = DetailPictureViewController()
+            dpVc.imageOverlayId = "car_side_left"
+            
+            nc.pushViewController(dpVc, animated: true)
         }
     }
     

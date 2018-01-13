@@ -12,6 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CarInfoController" customModule="kommilitonen_insurance" customModuleProvider="target">
             <connections>
+                <outlet property="captureBtn" destination="Nhl-k3-2DD" id="hTc-83-vTg"/>
+                <outlet property="statusBack" destination="OMC-lB-eew" id="czL-Qx-pgo"/>
+                <outlet property="statusFront" destination="Y8d-qo-oiU" id="nPv-B5-oPG"/>
+                <outlet property="statusLeft" destination="J2n-8o-JjJ" id="wLI-rp-xUt"/>
+                <outlet property="statusRight" destination="uPX-k5-wMk" id="xoV-IW-fYV"/>
                 <outlet property="view" destination="iN0-l3-epB" id="bEc-s4-e9B"/>
             </connections>
         </placeholder>
