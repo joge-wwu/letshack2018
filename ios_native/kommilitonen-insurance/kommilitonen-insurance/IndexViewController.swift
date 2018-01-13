@@ -20,6 +20,11 @@ public class IndexViewController : UIViewController {
         self.title="Index"
     }
     
+    @IBAction func vertraegeAction(_ sender: Any) {
+        if let nc = self.navigationController {
+            nc.pushViewController(DetailPictureViewController(), animated: true)
+        }
+    }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

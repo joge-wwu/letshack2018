@@ -48,6 +48,7 @@
 		D8567EDE200988B3006A7099 /* CGImagePropertyOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8567EDD200988B3006A7099 /* CGImagePropertyOrientation.swift */; };
 		D8567EE02009892F006A7099 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D8567EDF2009892F006A7099 /* MobileNet.mlmodel */; };
 		D8567EE2200990C8006A7099 /* CarClassificationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8567EE1200990C8006A7099 /* CarClassificationResult.swift */; };
+		D8567EE4200A0AD6006A7099 /* OverlayFrontView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8567EE3200A0AD6006A7099 /* OverlayFrontView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		D8567EDD200988B3006A7099 /* CGImagePropertyOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImagePropertyOrientation.swift; sourceTree = "<group>"; };
 		D8567EDF2009892F006A7099 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = MobileNet.mlmodel; path = dependencies/models/MobileNet.mlmodel; sourceTree = SOURCE_ROOT; };
 		D8567EE1200990C8006A7099 /* CarClassificationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarClassificationResult.swift; sourceTree = "<group>"; };
+		D8567EE3200A0AD6006A7099 /* OverlayFrontView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverlayFrontView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 				1418EFC12009AB1300632AD6 /* CameraView.xib */,
 				D8567EDB20098830006A7099 /* CarClassificationService.swift */,
 				D8567EE1200990C8006A7099 /* CarClassificationResult.swift */,
+				D8567EE3200A0AD6006A7099 /* OverlayFrontView.xib */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				D8567ED2200940A7006A7099 /* CaptureViewController.xib in Resources */,
 				1418EFBA2009A10400632AD6 /* ClassifySchadenView.xib in Resources */,
 				7C74185A1EF0FCC7002E195A /* voc.txt in Resources */,
+				D8567EE4200A0AD6006A7099 /* OverlayFrontView.xib in Resources */,
 				147EFCB1200965E00035A3A3 /* LogInView.xib in Resources */,
 				1418EFC22009AB1300632AD6 /* CameraView.xib in Resources */,
 				7C2DAF0B1EEF8B3A00E86EDA /* Assets.xcassets in Resources */,
