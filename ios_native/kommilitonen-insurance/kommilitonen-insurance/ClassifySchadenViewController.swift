@@ -17,7 +17,8 @@ public class ClassifySchadenViewController : UIViewController, LiveViewViewContr
         NSLog("Bild gefunden")
         
         if let nc = self.navigationController {
-            nc.pushViewController(ClassifySchadenResultViewController(), animated: true)
+            nc.popViewController(animated: false)
+            nc.pushViewController(ClassifySchadenResultViewController(), animated: false)
         }
 
 //            let ics = ImageClassificationService()
@@ -40,21 +41,13 @@ public class ClassifySchadenViewController : UIViewController, LiveViewViewContr
         self.title = "Schaden fotografieren"
         let liveViewViewController = LiveViewViewController()
         liveViewViewController.delegate = self
-        self.present(liveViewViewController, animated: true, completion: nil)
+        self.present(liveViewViewController, animated: false, completion: nil)
     }
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @IBAction func dummyCheckAction(_ sender: Any) {
-        
-        if let nc = self.navigationController {
-            nc.pushViewController(ClassifySchadenResultViewController(), animated: true)
-        }
-        
-        
-    }
     
     
 }

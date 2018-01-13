@@ -102,21 +102,22 @@ extension LiveViewViewController {
                     
                     let box = detectedObjects[i].box
                     
-                    if detectedObjects[i].label == "car" && detectedObjects[i].prob > 0.25 {
+                    if detectedObjects[i].label == "car" && detectedObjects[i].prob > 0.15 {
                         var plotView = PlotView(frame: box, color: UIColor.white)
                         
-                        if detectedObjects[i].prob > 0.5 {
-                            plotView = PlotView(frame: box, color: UIColor.green)
-                        }
-                        else if detectedObjects[i].prob > 0.3 {
+                        if detectedObjects[i].prob > 0.25 && detectedObjects[i].prob < 0.4 {
                             plotView = PlotView(frame: box, color: UIColor.orange)
+                        }
+                        else if detectedObjects[i].prob >= 0.4 {
+                            plotView = PlotView(frame: box, color: UIColor.green)
                         }
                      
                         plotView.backgroundColor = UIColor.clear
                         plotView.draw(CGRect(x: box.origin.x, y: box.origin.y, width: box.size.width, height: box.size.height))
                         self.boxesView.addSubview(plotView)
                         correctCount = correctCount + 1
-                        if correctCount >= 5 {
+                        if correctCount >= 20 {
+                            correctCount = 0
                             self.stopCam()
                             self.suspendFrames()
                             delegate?.validPhoto(image: UIImage(ciImage: frameImage), vc: self)
@@ -124,7 +125,7 @@ extension LiveViewViewController {
                         }
                     }
                    else {
-                    correctCount = 0
+                    correctCount = correctCount - 1
                     }
 //                        let plotView = PlotView(frame: box, color: UIColor.red)
 //                        plotView.backgroundColor = UIColor.clear
