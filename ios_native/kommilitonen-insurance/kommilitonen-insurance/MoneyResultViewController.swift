@@ -27,4 +27,9 @@ public class MoneyResultViewController : UIViewController {
         
     }
     
+    @IBAction func goHomeYouAreDrunk(_ sender: Any) {
+         if let nc = self.navigationController {
+            nc.present(IndexViewController(), animated: true)
+        }
+    }
 }
