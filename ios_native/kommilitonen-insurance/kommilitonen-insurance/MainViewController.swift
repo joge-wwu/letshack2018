@@ -9,14 +9,15 @@
 import Foundation
 import UIKit
 
-public class MainViewController : UIViewController {
+public class MainViewController : LoginViewController {
     
   
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         if let nc = self.navigationController {
-            nc.pushViewController(LoginViewController(), animated: true)
+            let mNc = UINavigationController(rootViewController: LoginViewController())
+            nc.present(mNc, animated: true, completion: nil)
         }
     }
     

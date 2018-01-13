@@ -10,6 +10,12 @@
 		1418EFB2200985FB00632AD6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418EFB1200985FB00632AD6 /* LoginViewController.swift */; };
 		1418EFB42009892900632AD6 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418EFB32009892900632AD6 /* IndexViewController.swift */; };
 		1418EFB62009894200632AD6 /* CarInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418EFB52009894200632AD6 /* CarInfoViewController.swift */; };
+		1418EFB82009A0B400632AD6 /* ClassifySchadenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418EFB72009A0B400632AD6 /* ClassifySchadenViewController.swift */; };
+		1418EFBA2009A10400632AD6 /* ClassifySchadenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1418EFB92009A10400632AD6 /* ClassifySchadenView.xib */; };
+		1418EFBC2009A1C300632AD6 /* ClassifySchadenResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418EFBB2009A1C300632AD6 /* ClassifySchadenResultViewController.swift */; };
+		1418EFBE2009A20300632AD6 /* ClassifySchadenResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1418EFBD2009A20300632AD6 /* ClassifySchadenResultView.xib */; };
+		1418EFC02009A72D00632AD6 /* DetailPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418EFBF2009A72D00632AD6 /* DetailPictureViewController.swift */; };
+		1418EFC22009AB1300632AD6 /* CameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1418EFC12009AB1300632AD6 /* CameraView.xib */; };
 		147EFCB1200965E00035A3A3 /* LogInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147EFCB0200965E00035A3A3 /* LogInView.xib */; };
 		147EFCED20097C060035A3A3 /* IndexView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147EFCEC20097C060035A3A3 /* IndexView.xib */; };
 		147EFCEF20097E620035A3A3 /* CarInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147EFCEE20097E620035A3A3 /* CarInfoView.xib */; };
@@ -44,6 +50,12 @@
 		1418EFB1200985FB00632AD6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1418EFB32009892900632AD6 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		1418EFB52009894200632AD6 /* CarInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInfoViewController.swift; sourceTree = "<group>"; };
+		1418EFB72009A0B400632AD6 /* ClassifySchadenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySchadenViewController.swift; sourceTree = "<group>"; };
+		1418EFB92009A10400632AD6 /* ClassifySchadenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClassifySchadenView.xib; sourceTree = "<group>"; };
+		1418EFBB2009A1C300632AD6 /* ClassifySchadenResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifySchadenResultViewController.swift; sourceTree = "<group>"; };
+		1418EFBD2009A20300632AD6 /* ClassifySchadenResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClassifySchadenResultView.xib; sourceTree = "<group>"; };
+		1418EFBF2009A72D00632AD6 /* DetailPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPictureViewController.swift; sourceTree = "<group>"; };
+		1418EFC12009AB1300632AD6 /* CameraView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraView.xib; sourceTree = "<group>"; };
 		147EFCB0200965E00035A3A3 /* LogInView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogInView.xib; sourceTree = "<group>"; };
 		147EFCEC20097C060035A3A3 /* IndexView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndexView.xib; sourceTree = "<group>"; };
 		147EFCEE20097E620035A3A3 /* CarInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarInfoView.xib; sourceTree = "<group>"; };
@@ -172,6 +184,12 @@
 				1418EFB1200985FB00632AD6 /* LoginViewController.swift */,
 				1418EFB32009892900632AD6 /* IndexViewController.swift */,
 				1418EFB52009894200632AD6 /* CarInfoViewController.swift */,
+				1418EFB72009A0B400632AD6 /* ClassifySchadenViewController.swift */,
+				1418EFB92009A10400632AD6 /* ClassifySchadenView.xib */,
+				1418EFBB2009A1C300632AD6 /* ClassifySchadenResultViewController.swift */,
+				1418EFBD2009A20300632AD6 /* ClassifySchadenResultView.xib */,
+				1418EFBF2009A72D00632AD6 /* DetailPictureViewController.swift */,
+				1418EFC12009AB1300632AD6 /* CameraView.xib */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -306,12 +324,15 @@
 				D8567ED8200975C3006A7099 /* car_sides.pb in Resources */,
 				147EFCEF20097E620035A3A3 /* CarInfoView.xib in Resources */,
 				7C7418581EF0FCC7002E195A /* jetpac.ntwk in Resources */,
+				1418EFBE2009A20300632AD6 /* ClassifySchadenResultView.xib in Resources */,
 				7C2DAF0E1EEF8B3A00E86EDA /* LaunchScreen.storyboard in Resources */,
 				147EFCED20097C060035A3A3 /* IndexView.xib in Resources */,
 				7C7418591EF0FCC7002E195A /* tiny-yolo-voc.pb in Resources */,
 				D8567ED2200940A7006A7099 /* CaptureViewController.xib in Resources */,
+				1418EFBA2009A10400632AD6 /* ClassifySchadenView.xib in Resources */,
 				7C74185A1EF0FCC7002E195A /* voc.txt in Resources */,
 				147EFCB1200965E00035A3A3 /* LogInView.xib in Resources */,
+				1418EFC22009AB1300632AD6 /* CameraView.xib in Resources */,
 				7C2DAF0B1EEF8B3A00E86EDA /* Assets.xcassets in Resources */,
 				7C2DAF091EEF8B3A00E86EDA /* Main.storyboard in Resources */,
 			);
@@ -330,6 +351,8 @@
 				7C74184B1EF0CE91002E195A /* Yolo.swift in Sources */,
 				7C7418491EF0CE8B002E195A /* TypeExtensions.swift in Sources */,
 				1418EFB42009892900632AD6 /* IndexViewController.swift in Sources */,
+				1418EFBC2009A1C300632AD6 /* ClassifySchadenResultViewController.swift in Sources */,
+				1418EFB82009A0B400632AD6 /* ClassifySchadenViewController.swift in Sources */,
 				7C2DAF041EEF8B3A00E86EDA /* AppDelegate.swift in Sources */,
 				7C74183E1EF0CE7E002E195A /* Jetpac.swift in Sources */,
 				7C7418461EF0CE8B002E195A /* tensorflow_utils.mm in Sources */,
@@ -338,6 +361,7 @@
 				D8567ED02009404C006A7099 /* CaptureViewController.swift in Sources */,
 				1418EFB62009894200632AD6 /* CarInfoViewController.swift in Sources */,
 				D8567ED42009480A006A7099 /* MainViewController.swift in Sources */,
+				1418EFC02009A72D00632AD6 /* DetailPictureViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

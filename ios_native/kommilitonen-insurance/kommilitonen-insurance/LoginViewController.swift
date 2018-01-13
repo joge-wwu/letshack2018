@@ -24,11 +24,17 @@ public class LoginViewController : UIViewController {
         self.title="Login"
     }
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.title = "Login"
+    }
+    
     
     @IBAction func loginButtonAction(_ sender: Any) {
     
         
         if let nc = self.navigationController {
+            self.title = "Logout"
             nc.pushViewController(IndexViewController(), animated: true)
         }
     

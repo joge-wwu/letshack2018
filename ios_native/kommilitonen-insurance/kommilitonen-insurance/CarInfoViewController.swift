@@ -21,6 +21,15 @@ public class CarInfoController : UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        self.title="Vorgehen"
+        self.title = "Detailaufnahmen"
     }
+    
+    @IBAction func takeDeatilImageAction(_ sender: Any) {
+        
+        if let nc = self.navigationController {
+            nc.pushViewController(DetailPictureViewController(), animated: true)
+        }
+        
+    }
+    
 }

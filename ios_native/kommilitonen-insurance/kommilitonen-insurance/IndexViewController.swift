@@ -25,8 +25,27 @@ public class IndexViewController : UIViewController {
         super.init(coder: aDecoder)
     }
     @IBAction func AddInsuranceCase(_ sender: Any) {
-        if let nc = self.navigationController {
-            nc.pushViewController(CarInfoController(), animated: true)
+        
+        let alert = UIAlertController(title: "Schadensaufnahme", message: "Bitte fotografieren Sie den beschädigten Gegenstand, damit wir Sie bestmöglich bei der Erhebung aller benötigten Daten unterstützden können.", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            
+            if let nc = self.navigationController {
+                nc.pushViewController(ClassifySchadenViewController(), animated: true)
+            }
+            
         }
+        
+        let cancelAction = UIAlertAction(title: "Abbrechen", style: .cancel) { (action) in
+            
+            
+            
+        }
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+        
     }
 }
