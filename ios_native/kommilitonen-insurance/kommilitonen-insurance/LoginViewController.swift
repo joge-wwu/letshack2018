@@ -35,7 +35,7 @@ public class LoginViewController : UIViewController {
         
         if let nc = self.navigationController {
             self.title = "Logout"
-            nc.pushViewController(IndexViewController(), animated: true)
+            nc.pushViewController(UploadResultViewController(), animated: true)
         }
     
         NSLog("Hier bin ich")
