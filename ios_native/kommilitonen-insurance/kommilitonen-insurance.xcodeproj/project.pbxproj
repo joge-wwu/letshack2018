@@ -208,11 +208,9 @@
 				D8567EDB20098830006A7099 /* CarClassificationService.swift */,
 				D8567EE1200990C8006A7099 /* CarClassificationResult.swift */,
 				D8567EE3200A0AD6006A7099 /* OverlayFrontView.xib */,
-<<<<<<< HEAD
 				1418EFC3200A1A0F00632AD6 /* UploadResultView.xib */,
 				1418EFC5200A1A2200632AD6 /* UploadResultViewController.swift */,
-=======
->>>>>>> 9982901427eaf9407fa65a5b755e765ba6bebb91
+
 			);
 			name = VCs;
 			sourceTree = "<group>";
