@@ -4,13 +4,16 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IndexViewController" customModule="kommilitonen_insurance" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="lsw-1b-4Fe"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -46,9 +49,10 @@
                         <constraint firstAttribute="height" constant="150" id="SnL-xG-8da"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3K-L3-piS">
-                    <rect key="frame" x="63" y="254" width="248" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3K-L3-piS">
+                    <rect key="frame" x="50" y="254" width="275" height="40"/>
                     <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Schadensfall hinzufügen"/>
                     <userDefinedRuntimeAttributes>
@@ -56,10 +60,14 @@
                             <integer key="value" value="10"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="AddInsuranceCase:" destination="-1" eventType="touchUpInside" id="YVf-Ge-JXH"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHo-oa-10R">
-                    <rect key="frame" x="63" y="590" width="248" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHo-oa-10R">
+                    <rect key="frame" x="50" y="592" width="275" height="34"/>
                     <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Optionen"/>
                     <userDefinedRuntimeAttributes>
@@ -68,9 +76,10 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bB3-V9-2k5">
-                    <rect key="frame" x="63" y="399" width="248" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bB3-V9-2k5">
+                    <rect key="frame" x="50" y="419" width="275" height="40"/>
                     <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Mein Profil"/>
                     <userDefinedRuntimeAttributes>
@@ -79,9 +88,10 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyJ-n4-qMh">
-                    <rect key="frame" x="63" y="324" width="248" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyJ-n4-qMh">
+                    <rect key="frame" x="50" y="334" width="275" height="40"/>
                     <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Meine Verträge"/>
                     <userDefinedRuntimeAttributes>
@@ -93,12 +103,24 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="yHo-oa-10R" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="3Fp-Fl-NGP"/>
                 <constraint firstItem="yHo-oa-10R" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="3p4-pE-d3m"/>
+                <constraint firstItem="I3K-L3-piS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="6eH-kI-KHn"/>
+                <constraint firstItem="wyJ-n4-qMh" firstAttribute="top" secondItem="I3K-L3-piS" secondAttribute="bottom" constant="50" id="8Xt-yv-DWy"/>
+                <constraint firstItem="bB3-V9-2k5" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="399" id="8gG-b7-Uvf"/>
+                <constraint firstItem="bB3-V9-2k5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="BkI-Aq-09E"/>
                 <constraint firstItem="wyJ-n4-qMh" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="FjK-c0-i76"/>
                 <constraint firstItem="MQh-Bi-JBo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="GP1-iD-zPK"/>
+                <constraint firstItem="wyJ-n4-qMh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="Ohf-Uh-yct"/>
+                <constraint firstItem="yHo-oa-10R" firstAttribute="top" secondItem="bB3-V9-2k5" secondAttribute="bottom" constant="139" id="ZVF-DA-8mv"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MQh-Bi-JBo" secondAttribute="trailing" id="aaT-UF-Rqk"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="I3K-L3-piS" secondAttribute="trailing" constant="50" id="biT-Iz-r1h"/>
                 <constraint firstItem="I3K-L3-piS" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="f6z-KY-LSq"/>
                 <constraint firstItem="bB3-V9-2k5" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="hWI-eC-nEQ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="yHo-oa-10R" secondAttribute="trailing" constant="50" id="kgu-2b-QlA"/>
+                <constraint firstItem="I3K-L3-piS" firstAttribute="top" secondItem="MQh-Bi-JBo" secondAttribute="bottom" constant="84" id="pDH-Cz-WYd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bB3-V9-2k5" secondAttribute="trailing" constant="50" id="qYj-TO-k8d"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="wyJ-n4-qMh" secondAttribute="trailing" constant="50" id="udU-BD-fHg"/>
                 <constraint firstItem="MQh-Bi-JBo" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="v10-XX-C6d"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

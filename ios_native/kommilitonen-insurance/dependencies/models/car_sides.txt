@@ -1,0 +1,5 @@
+car_back
+car_front
+car_left
+car_right
+car_wrong

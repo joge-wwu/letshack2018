@@ -7,12 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1418EFB2200985FB00632AD6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418EFB1200985FB00632AD6 /* LoginViewController.swift */; };
-		1418EFB42009892900632AD6 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418EFB32009892900632AD6 /* IndexViewController.swift */; };
-		1418EFB62009894200632AD6 /* CarInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418EFB52009894200632AD6 /* CarInfoViewController.swift */; };
 		147EFCB1200965E00035A3A3 /* LogInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147EFCB0200965E00035A3A3 /* LogInView.xib */; };
-		147EFCED20097C060035A3A3 /* IndexView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147EFCEC20097C060035A3A3 /* IndexView.xib */; };
-		147EFCEF20097E620035A3A3 /* CarInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147EFCEE20097E620035A3A3 /* CarInfoView.xib */; };
+		147EFCED20097C060035A3A3 /* Index.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147EFCEC20097C060035A3A3 /* Index.xib */; };
+		147EFCEF20097E620035A3A3 /* CarInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 147EFCEE20097E620035A3A3 /* CarInfo.xib */; };
 		7C2DAF041EEF8B3A00E86EDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2DAF031EEF8B3A00E86EDA /* AppDelegate.swift */; };
 		7C2DAF061EEF8B3A00E86EDA /* LiveViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2DAF051EEF8B3A00E86EDA /* LiveViewViewController.swift */; };
 		7C2DAF091EEF8B3A00E86EDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2DAF071EEF8B3A00E86EDA /* Main.storyboard */; };
@@ -41,12 +38,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1418EFB1200985FB00632AD6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		1418EFB32009892900632AD6 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
-		1418EFB52009894200632AD6 /* CarInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInfoViewController.swift; sourceTree = "<group>"; };
 		147EFCB0200965E00035A3A3 /* LogInView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogInView.xib; sourceTree = "<group>"; };
-		147EFCEC20097C060035A3A3 /* IndexView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndexView.xib; sourceTree = "<group>"; };
-		147EFCEE20097E620035A3A3 /* CarInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarInfoView.xib; sourceTree = "<group>"; };
+		147EFCEC20097C060035A3A3 /* Index.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Index.xib; sourceTree = "<group>"; };
+		147EFCEE20097E620035A3A3 /* CarInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarInfo.xib; sourceTree = "<group>"; };
 		7C2DAF001EEF8B3A00E86EDA /* kommilitonen-insurance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kommilitonen-insurance.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2DAF031EEF8B3A00E86EDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C2DAF051EEF8B3A00E86EDA /* LiveViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewViewController.swift; sourceTree = "<group>"; };
@@ -163,15 +157,16 @@
 		7C74184F1EF0CF30002E195A /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< Updated upstream
+				7C2DAF051EEF8B3A00E86EDA /* ViewController.swift */,
+				147EFCB0200965E00035A3A3 /* LogInView.xib */,
+				147EFCEC20097C060035A3A3 /* Index.xib */,
+				147EFCEE20097E620035A3A3 /* CarInfo.xib */,
+=======
 				7C2DAF051EEF8B3A00E86EDA /* LiveViewViewController.swift */,
 				D8567ECF2009404C006A7099 /* CaptureViewController.swift */,
 				D8567ED32009480A006A7099 /* MainViewController.swift */,
-				147EFCB0200965E00035A3A3 /* LogInView.xib */,
-				147EFCEC20097C060035A3A3 /* IndexView.xib */,
-				147EFCEE20097E620035A3A3 /* CarInfoView.xib */,
-				1418EFB1200985FB00632AD6 /* LoginViewController.swift */,
-				1418EFB32009892900632AD6 /* IndexViewController.swift */,
-				1418EFB52009894200632AD6 /* CarInfoViewController.swift */,
+>>>>>>> Stashed changes
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -302,12 +297,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< Updated upstream
+				147EFCEF20097E620035A3A3 /* CarInfo.xib in Resources */,
+=======
 				D8567ED7200975C3006A7099 /* car_sides.txt in Resources */,
 				D8567ED8200975C3006A7099 /* car_sides.pb in Resources */,
-				147EFCEF20097E620035A3A3 /* CarInfoView.xib in Resources */,
+>>>>>>> Stashed changes
 				7C7418581EF0FCC7002E195A /* jetpac.ntwk in Resources */,
 				7C2DAF0E1EEF8B3A00E86EDA /* LaunchScreen.storyboard in Resources */,
-				147EFCED20097C060035A3A3 /* IndexView.xib in Resources */,
+				147EFCED20097C060035A3A3 /* Index.xib in Resources */,
 				7C7418591EF0FCC7002E195A /* tiny-yolo-voc.pb in Resources */,
 				D8567ED2200940A7006A7099 /* CaptureViewController.xib in Resources */,
 				7C74185A1EF0FCC7002E195A /* voc.txt in Resources */,
@@ -324,19 +322,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1418EFB2200985FB00632AD6 /* LoginViewController.swift in Sources */,
 				7C2DAF061EEF8B3A00E86EDA /* LiveViewViewController.swift in Sources */,
 				D8567EDA20097667006A7099 /* YoloCarSides.swift in Sources */,
 				7C74184B1EF0CE91002E195A /* Yolo.swift in Sources */,
 				7C7418491EF0CE8B002E195A /* TypeExtensions.swift in Sources */,
-				1418EFB42009892900632AD6 /* IndexViewController.swift in Sources */,
 				7C2DAF041EEF8B3A00E86EDA /* AppDelegate.swift in Sources */,
 				7C74183E1EF0CE7E002E195A /* Jetpac.swift in Sources */,
 				7C7418461EF0CE8B002E195A /* tensorflow_utils.mm in Sources */,
 				7C74183C1EF0CE75002E195A /* Camera.swift in Sources */,
 				7C7418471EF0CE8B002E195A /* tfWrap.mm in Sources */,
 				D8567ED02009404C006A7099 /* CaptureViewController.swift in Sources */,
-				1418EFB62009894200632AD6 /* CarInfoViewController.swift in Sources */,
 				D8567ED42009480A006A7099 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

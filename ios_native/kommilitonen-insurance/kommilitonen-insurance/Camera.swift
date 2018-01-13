@@ -59,40 +59,35 @@ var sourcePixelFormat = OSType()
 
 private var photoSingleton = singleton_handle()
 private var photoCaptureCompletion : ((Data)->Void)?
-private var end_singleton: ((Void)->Void)?
+private var end_singleton: (()->Void)?
 
 private var worldView = WorldView()
 
 var frameProcessing: ((CIImage)->Void)?
 
-extension ViewController : AVCaptureVideoDataOutputSampleBufferDelegate, AVCapturePhotoCaptureDelegate {
+extension LiveViewViewController : AVCaptureVideoDataOutputSampleBufferDelegate, AVCapturePhotoCaptureDelegate {
     
     func setupCam() {
         
         //Cam-related UI elements
         do {
+            
+            
             worldView = WorldView(frame: view.bounds)
             worldView.backgroundColor = UIColor.black
             view.addSubview(worldView)
             view.sendSubview(toBack: worldView)
             
+            
             resumeButton = UIButton(frame: CGRect(origin: worldView.center, size: CGSize(width: 150, height: 50)))
             resumeButton .setTitle("Resume", for: UIControlState())
             resumeButton .setTitleColor(UIColor.white, for: UIControlState())
             resumeButton.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
-            resumeButton .addTarget(self, action: #selector(ViewController.resumeInterruptedSession(_:)), for: .touchUpInside)
+            resumeButton .addTarget(self, action: #selector(LiveViewViewController.resumeInterruptedSession(_:)), for: .touchUpInside)
             resumeButton.center = worldView.center
             resumeButton.isHidden = true
             worldView .addSubview(resumeButton)
-            
-            cameraUnavailableLabel = UILabel(frame: CGRect(origin: worldView.center, size: CGSize(width: 200, height: 50)))
-            cameraUnavailableLabel.text = "Camera Unavailable"
-            cameraUnavailableLabel.textColor = UIColor.white
-            cameraUnavailableLabel.textAlignment = .center
-            cameraUnavailableLabel.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
-            cameraUnavailableLabel.center = worldView.center
-            cameraUnavailableLabel.isHidden = true
-            worldView .addSubview(cameraUnavailableLabel)
+        
         }
         
         // create AVCaptureSession
@@ -137,7 +132,7 @@ extension ViewController : AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptu
         
         backgroundRecordingID = UIBackgroundTaskInvalid
         
-        guard let camera =  ViewController.deviceWithMediaType(AVMediaTypeVideo, preferringPosition: frontCam ? .front : .back) else { return }
+        guard let camera =  LiveViewViewController.deviceWithMediaType(AVMediaTypeVideo, preferringPosition: frontCam ? .front : .back) else { return }
         let vidInput: AVCaptureDeviceInput!
         do {
             
@@ -268,9 +263,14 @@ extension ViewController : AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptu
         
         sessionQueue.async {
             if setupResult == .success {
-                session.stopRunning()
-                sessionRunning = false
-                //self .removeObservers()
+                do {
+                    session.stopRunning()
+                    sessionRunning = false
+                }
+                catch
+                {}
+                
+                //self.removeObservers()
             }
         }
         
@@ -326,6 +326,8 @@ extension ViewController : AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptu
             previewLayer.connection.videoOrientation = AVCaptureVideoOrientation(rawValue: deviceOrientation.rawValue)!
             videoDataOutput.connection(withMediaType: AVMediaTypeVideo).videoOrientation = AVCaptureVideoOrientation(rawValue: deviceOrientation.rawValue)!
         }
+        
+        updateViewConstraints()
         
     }
     
@@ -388,14 +390,14 @@ extension ViewController : AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptu
         session.addObserver(self, forKeyPath: "running", options: NSKeyValueObservingOptions.new, context: SessionRunningContext)
         stillImageOutput.addObserver(self, forKeyPath: "capturingStillImage", options:NSKeyValueObservingOptions.new, context: CapturingStillImageContext)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.subjectAreaDidChange(_:)), name: NSNotification.Name.AVCaptureDeviceSubjectAreaDidChange, object: videoDeviceInput.device)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.sessionRuntimeError(_:)), name: NSNotification.Name.AVCaptureSessionRuntimeError, object: session)
+        NotificationCenter.default.addObserver(self, selector: #selector(LiveViewViewController.subjectAreaDidChange(_:)), name: NSNotification.Name.AVCaptureDeviceSubjectAreaDidChange, object: videoDeviceInput.device)
+        NotificationCenter.default.addObserver(self, selector: #selector(LiveViewViewController.sessionRuntimeError(_:)), name: NSNotification.Name.AVCaptureSessionRuntimeError, object: session)
         // A session can only run when the app is full screen. It will be interrupted in a multi-app layout, introduced in iOS 9,
         // see also the documentation of AVCaptureSessionInterruptionReason. Add observers to handle these session interruptions
         // and show a preview is paused message. See the documentation of AVCaptureSessionWasInterruptedNotification for other
         // interruption reasons.
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.sessionWasInterrupted(_:)), name: NSNotification.Name.AVCaptureSessionWasInterrupted, object: session)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.sessionInterruptionEnded(_:)), name: NSNotification.Name.AVCaptureSessionInterruptionEnded, object: session)
+        NotificationCenter.default.addObserver(self, selector: #selector(LiveViewViewController.sessionWasInterrupted(_:)), name: NSNotification.Name.AVCaptureSessionWasInterrupted, object: session)
+        NotificationCenter.default.addObserver(self, selector: #selector(LiveViewViewController.sessionInterruptionEnded(_:)), name: NSNotification.Name.AVCaptureSessionInterruptionEnded, object: session)
     }
     
     fileprivate func removeObservers() {
@@ -610,20 +612,24 @@ extension ViewController : AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptu
     
     //MARK: - Orientation
     override var shouldAutorotate : Bool {
-        return true
+        return false
     }
     
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
-        return .landscape
+        return .allButUpsideDown
     }
     
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         orientCam()
     }
     
     override var prefersStatusBarHidden : Bool {
         return true
     }
+    
+    
     
 }
 

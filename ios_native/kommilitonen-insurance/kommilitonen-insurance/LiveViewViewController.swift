@@ -8,15 +8,23 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol LiveViewViewControllerDelegate: class {
     
-    var results = UITextView()
+    func validPhoto(image: UIImage, vc: LiveViewViewController)
+    
+}
+
+class LiveViewViewController: UIViewController {
+    
     var boxesView = UIView()
+    
+    var correctCount : Int = 0;
+    
+    weak var delegate: LiveViewViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCam()
-        
         async {
             self.loadYoloModel()
             frameProcessing = { frame in
@@ -24,7 +32,10 @@ class ViewController: UIViewController {
             }
         }
         setResultDisplay()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     override func didReceiveMemoryWarning() {
@@ -32,18 +43,13 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setResultDisplay(){
-        self.results.frame = CGRect(x: 20, y: 20, width: self.view.frame.width/2, height: 60)
-        self.results.textColor = UIColor.green
-        self.results.backgroundColor = UIColor.clear
-        self.view.addSubview(self.results)
-        self.view.bringSubview(toFront: self.results)
-        
+    func setResultDisplay() {
+        //self.boxesView.frame = self.view.frame
+        self.boxesView.backgroundColor = UIColor.clear
         self.boxesView.frame = self.view.frame
         self.boxesView.backgroundColor = UIColor.clear
         self.view.addSubview(boxesView)
         self.view.bringSubview(toFront: self.boxesView)
-        
         self.view.layoutSubviews()
     }
     
@@ -60,10 +66,10 @@ var detectedObjects : YoloOutput = []
 var detectedResults = [[String]]()
 
 
-extension ViewController {
+extension LiveViewViewController {
+    
     
     func loadYoloModel() {
-        
         yolo.load()
         jpac.load()
     }
@@ -88,19 +94,36 @@ extension ViewController {
         }
         DispatchQueue.main.sync() {
             
-            self.results.text = ""
             self.cleanView(someView: self.boxesView)
             if detectedObjects.isEmpty == false{
                 let numOfObjects = detectedObjects.count
                 print("\(numOfObjects) Objects is/are detected!")
                 for i in 0..<numOfObjects{
                     
-                    self.results.text.append( "\(i) : \(detectedObjects[i].label) \n")
                     let box = detectedObjects[i].box
-                    let plotView = PlotView(frame: box)
-                    plotView.backgroundColor = UIColor.clear
-                    plotView.draw(CGRect(x: box.origin.x, y: box.origin.y, width: box.size.width, height: box.size.height))
-                    self.boxesView.addSubview(plotView)
+                    
+                    if detectedObjects[i].label == "car" && detectedObjects[i].prob > 0.25 {
+                        let plotView = PlotView(frame: box, color: UIColor.green)
+                        plotView.backgroundColor = UIColor.clear
+                        plotView.draw(CGRect(x: box.origin.x, y: box.origin.y, width: box.size.width, height: box.size.height))
+                        self.boxesView.addSubview(plotView)
+                        correctCount = correctCount + 1
+                        if correctCount >= 5 {
+                            self.suspendFrames()
+                            self.stopCam()
+                            delegate?.validPhoto(image: UIImage(ciImage: frameImage), vc: self)
+                            return;
+                        }
+                    }
+                   else {
+                    correctCount = 0
+                    }
+//                        let plotView = PlotView(frame: box, color: UIColor.red)
+//                        plotView.backgroundColor = UIColor.clear
+//                        plotView.draw(CGRect(x: box.origin.x, y: box.origin.y, width: box.size.width, height: box.size.height))
+//                        self.boxesView.addSubview(plotView)
+//                    }
+                    
                     
                 }
             }
@@ -119,7 +142,10 @@ extension ViewController {
 
 public class PlotView: UIView
 {
-    override init(frame: CGRect) {
+    var color: UIColor
+    
+    init(frame: CGRect, color: UIColor) {
+        self.color = color
         super.init(frame: frame)
     }
     
@@ -131,7 +157,7 @@ public class PlotView: UIView
     {
         let context = UIGraphicsGetCurrentContext()
         context?.setLineWidth(4.0)
-        context?.setStrokeColor(UIColor.blue.cgColor)
+        context?.setStrokeColor(color.cgColor)
         print("frame: \(frame)")
         context?.addRect(frame)
         context?.strokePath()
