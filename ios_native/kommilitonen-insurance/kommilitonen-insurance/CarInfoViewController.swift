@@ -15,6 +15,7 @@ public class CarInfoController : UIViewController, UINavigationControllerDelegat
     public var imageOverlayIds : [String] = ["car_front", "car_side_right", "car_back", "car_side_left"]
     public var captureStep : Int = 0
     
+    @IBOutlet weak var nummernschild: UILabel!
     @IBOutlet weak var statusFront: UILabel!
     @IBOutlet weak var statusLeft: UILabel!
     @IBOutlet weak var statusRight: UILabel!
@@ -67,7 +68,10 @@ public class CarInfoController : UIViewController, UINavigationControllerDelegat
         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
         
         let alert = UIAlertController(title: nil, message: "Foto wird geprüft ...", preferredStyle: .alert)
-        
+        alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: {
+            (alertAction: UIAlertAction!) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
@@ -77,8 +81,12 @@ public class CarInfoController : UIViewController, UINavigationControllerDelegat
         self.present(alert, animated: true, completion: nil)
         
         
-        let uploadAlert = UIAlertController(title: nil, message: "Foto wird gespeichert ...", preferredStyle: .alert)
         
+        let uploadAlert = UIAlertController(title: nil, message: "Foto wird gespeichert ...", preferredStyle: .alert)
+        uploadAlert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: {
+            (alertAction: UIAlertAction!) in
+            uploadAlert.dismiss(animated: true, completion: nil)
+        }))
         let uploadloadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         uploadloadingIndicator.hidesWhenStopped = true
         uploadloadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
@@ -86,14 +94,21 @@ public class CarInfoController : UIViewController, UINavigationControllerDelegat
         
         uploadAlert.view.addSubview(uploadloadingIndicator)
         
-        let kennzeichenAlert = UIAlertController(title: nil, message: "Kennzeichen wird analysiert ...", preferredStyle: .alert)
         
+        
+        let kennzeichenAlert = UIAlertController(title: nil, message: "Kennzeichen wird analysiert ...", preferredStyle: .alert)
+        kennzeichenAlert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: {
+            (alertAction: UIAlertAction!) in
+            kennzeichenAlert.dismiss(animated: true, completion: nil)
+        }))
         let kennzeichenIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         kennzeichenIndicator.hidesWhenStopped = true
         kennzeichenIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         kennzeichenIndicator.startAnimating();
         
         kennzeichenAlert.view.addSubview(kennzeichenIndicator)
+        
+        
         
         
         ImageRemoteCheckService.checkImageJson(image: image, imageTypeId: imageOverlayIds[captureStep]) { (result) in
@@ -113,15 +128,23 @@ public class CarInfoController : UIViewController, UINavigationControllerDelegat
                     
                 }
                 
-                self.present(kennzeichenAlert, animated: true, completion: nil)
+                if self.captureStep == 0 {
                 
-                ImageRemoteCheckService.checkKennzeichen(image: image, imageTypeId: self.imageOverlayIds[self.captureStep]) { (result) in
+                    self.present(kennzeichenAlert, animated: true, completion: nil)
+                
+                    ImageRemoteCheckService.checkKennzeichen(image: image, imageTypeId: self.imageOverlayIds[self.captureStep]) { (result) in
+                        
+                        kennzeichenAlert.dismiss(animated: false, completion: nil)
+                        
+                        DispatchQueue.main.async {
+                        
+                            self.nummernschild.text = result
+                            
+                        }
+                        
+                        NSLog("Kennzeichen: " + result)
                     
-                    kennzeichenAlert.dismiss(animated: false, completion: nil)
-                    
-                    
-                    
-                    NSLog("Kennzeichen: " + result)
+                    }
                     
                 }
                 

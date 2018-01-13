@@ -16,7 +16,9 @@ public class ImageRemoteCheckService  {
         
         let imageData = UIImageJPEGRepresentation(image, 0.6)
         
+        //let uploadUrlString = "http://mc-macbook.local:5002/classifier"
         let uploadUrlString = "http://192.168.0.126:5002/classifier"
+        
         let uploadUrl = URL(string: uploadUrlString)
         
         var postRequest = URLRequest.init(url: uploadUrl!)
